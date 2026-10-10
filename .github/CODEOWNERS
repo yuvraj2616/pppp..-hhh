@@ -1,0 +1,46 @@
+# Replace @rahul-gh, @hritik-gh, @pratham-gh with the real GitHub usernames before the first push.
+# CODEOWNERS only REQUESTS reviews here; "Require review from Code Owners" stays OFF, because both
+# people in a pair push from the same account and GitHub won't let an account approve its own PR.
+
+*                           @rahul-gh
+
+# Shared contracts: everyone sees changes
+/app/schemas.py             @rahul-gh @hritik-gh @pratham-gh
+/app/data/schema.sql        @rahul-gh @hritik-gh @pratham-gh
+/app/config.py              @rahul-gh @hritik-gh @pratham-gh
+
+# Pair A - Rahul + Arnav: knowledge layer
+/app/main.py                @rahul-gh
+/app/audit.py               @rahul-gh
+/app/policy/                @rahul-gh
+/app/ingest/                @rahul-gh
+/app/retrieval/             @rahul-gh
+/data/source_register.csv   @rahul-gh
+/data/documents/            @rahul-gh
+/scripts/ingest_corpus.py   @rahul-gh
+/tests/test_contract.py     @rahul-gh
+/tests/test_precedence.py   @rahul-gh
+
+# Pair B - Hritik + Yuvraj: data and tools
+/app/data/                  @hritik-gh
+/app/rules/                 @hritik-gh
+/app/tools/                 @hritik-gh
+/data/synthetic/            @hritik-gh
+/data/rules_seed.csv        @hritik-gh
+/scripts/load_students.py   @hritik-gh
+/scripts/generate_students.py @hritik-gh
+/scripts/validate_students.py @hritik-gh
+/scripts/seed_rules.py      @hritik-gh
+/tests/test_tools.py        @hritik-gh
+
+# Pair C - Pratham + Sheel: orchestration and quality
+/app/llm/                   @pratham-gh
+/app/graph/                 @pratham-gh
+/app/safety/                @pratham-gh
+/ui/                        @pratham-gh
+/eval/                      @pratham-gh
+/docs/                      @pratham-gh
+/.github/                   @pratham-gh
+/Dockerfile                 @pratham-gh
+/docker-compose.yml         @pratham-gh
+/tests/test_safety.py       @pratham-gh

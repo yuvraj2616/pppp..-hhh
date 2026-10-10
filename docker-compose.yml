@@ -1,0 +1,35 @@
+# docker compose up --build  -> API on :8000, UI on :8501.
+# ChromaDB and SQLite are embedded in the API and persisted under ./storage (never re-ingested on restart).
+# Ollama runs on the host machine: `ollama serve` + `ollama pull qwen2.5:7b-instruct` before starting.
+services:
+  api:
+    build: .
+    env_file: .env
+    environment:
+      STORAGE_DIR: /app/storage
+      DOCUMENTS_DIR: /app/data/documents
+    volumes:
+      - ./storage:/app/storage
+      - ./data:/app/data
+      - hf-cache:/root/.cache/huggingface
+    ports:
+      - "8000:8000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/health"]
+      interval: 10s
+      retries: 30
+
+  ui:
+    build: .
+    command: streamlit run ui/app.py --server.port 8501 --server.address 0.0.0.0
+    environment:
+      API_URL: http://api:8000
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+
+volumes:
+  hf-cache:

@@ -1,0 +1,18 @@
+# Full runtime (Docker image). CPU-only torch keeps the image small.
+--extra-index-url https://download.pytorch.org/whl/cpu
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pydantic>=2.6
+python-multipart>=0.0.9
+httpx>=0.27
+langgraph>=0.2
+chromadb>=0.5
+sentence-transformers>=3.0
+torch
+pymupdf>=1.24
+pdfplumber>=0.11
+pytesseract>=0.3.10
+Pillow>=10
+streamlit>=1.35
+pandas>=2.2
+pytest>=8

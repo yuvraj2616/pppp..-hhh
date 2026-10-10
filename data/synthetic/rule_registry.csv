@@ -1,0 +1,5 @@
+rule_id,description,parameter,operator,value,scope_programmes,scope_batches,effective_from,effective_to,source_doc_id,source_section
+ATT-MIN-SYN,Synthetic minimum attendance,min_attendance_pct,>=,75,ALL,ALL,2024-07-01,,SYNTHETIC-RULES,1
+PASS-MIN-SYN,Synthetic pass percentage,pass_marks_pct,>=,50,ALL,ALL,2024-07-01,,SYNTHETIC-RULES,2
+PLC-CGPA-SYN,Synthetic placement CGPA,min_cgpa_placement,>=,6.0,ALL,ALL,2024-07-01,,SYNTHETIC-RULES,3
+PLC-BACK-SYN,Synthetic placement backlogs,max_backlogs_placement,<=,0,ALL,ALL,2024-07-01,,SYNTHETIC-RULES,4

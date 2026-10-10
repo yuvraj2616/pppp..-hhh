@@ -1,0 +1,37 @@
+student_id,full_name,programme,batch_year,current_semester,cgpa,active_backlogs
+S1001,Synthetic Student 1,B.Tech CSE,2023,1,8.25,0
+S1002,Synthetic Student 2,BBA,2024,2,6.98,0
+S1003,Synthetic Student 3,B.Tech CSE,2023,3,8.37,1
+S1004,Synthetic Student 4,BBA,2024,4,8.09,0
+S1005,Synthetic Student 5,B.Tech CSE,2023,5,6.5,0
+S1006,Synthetic Student 6,BBA,2024,6,8.13,3
+S1007,Synthetic Student 7,B.Tech CSE,2023,1,6.0,0
+S1008,Synthetic Student 8,BBA,2024,2,6.91,0
+S1009,Synthetic Student 9,B.Tech CSE,2023,3,8.79,0
+S1010,Synthetic Student 10,BBA,2024,4,8.43,0
+S1011,Synthetic Student 11,B.Tech CSE,2023,5,6.7,0
+S1012,Synthetic Student 12,BBA,2024,6,6.5,0
+S1013,Synthetic Student 13,B.Tech CSE,2023,1,8.91,0
+S1014,Synthetic Student 14,BBA,2024,2,8.78,0
+S1015,Synthetic Student 15,B.Tech CSE,2023,3,6.6,0
+S1016,Synthetic Student 16,BBA,2024,4,7.97,0
+S1017,Synthetic Student 17,B.Tech CSE,2023,5,9.03,0
+S1018,Synthetic Student 18,BBA,2024,6,6.82,0
+S1019,Synthetic Student 19,B.Tech CSE,2023,1,8.32,0
+S1020,Synthetic Student 20,BBA,2024,2,8.94,0
+S1021,Synthetic Student 21,B.Tech CSE,2023,3,7.09,0
+S1022,Synthetic Student 22,BBA,2024,4,6.72,0
+S1023,Synthetic Student 23,B.Tech CSE,2023,5,8.34,0
+S1024,Synthetic Student 24,BBA,2024,6,8.23,0
+S1025,Synthetic Student 25,B.Tech CSE,2023,1,6.72,0
+S1026,Synthetic Student 26,BBA,2024,2,9.37,0
+S1027,Synthetic Student 27,B.Tech CSE,2023,3,6.9,0
+S1028,Synthetic Student 28,BBA,2024,4,6.93,0
+S1029,Synthetic Student 29,B.Tech CSE,2023,5,7.48,0
+S1030,Synthetic Student 30,BBA,2024,6,9.12,0
+S1031,Synthetic Student 31,B.Tech CSE,2023,1,6.88,0
+S1032,Synthetic Student 32,BBA,2024,2,9.03,0
+S1033,Synthetic Student 33,B.Tech CSE,2023,3,7.05,0
+S1034,Synthetic Student 34,BBA,2024,4,7.92,0
+S1035,Synthetic Student 35,B.Tech CSE,2023,5,9.07,0
+S1036,Synthetic Student 36,BBA,2024,6,6.9,0

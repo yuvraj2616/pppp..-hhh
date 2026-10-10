@@ -1,0 +1,17 @@
+{
+  "model": "mock",
+  "temperature": 0.0,
+  "calls": 0,
+  "seed": 42,
+  "students": 36,
+  "generated_at": "2026-10-10T11:41:33.917582+00:00",
+  "edge_cases": {
+    "attendance_exact_threshold": "S1001",
+    "attendance_one_class_below": "S1002",
+    "marks_just_below_pass": "S1003",
+    "absent_result": "S1004",
+    "detained_student": "S1005",
+    "multiple_backlogs": "S1006",
+    "cgpa_at_placement_cutoff": "S1007"
+  }
+}

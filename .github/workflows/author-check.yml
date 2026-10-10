@@ -1,0 +1,34 @@
+name: author-check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  authors:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Every commit is from a participant identity
+        env:
+          ALLOWED_AUTHORS: ${{ vars.ALLOWED_AUTHORS }}
+          EVENT: ${{ github.event_name }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          chmod +x scripts/check-authors.sh
+          zero=0000000000000000000000000000000000000000
+          if [ "$EVENT" = "pull_request" ]; then
+            scripts/check-authors.sh "$PR_BASE..$PR_HEAD"
+          elif [ -n "$BEFORE" ] && [ "$BEFORE" != "$zero" ] && git cat-file -e "$BEFORE" 2>/dev/null; then
+            scripts/check-authors.sh "$BEFORE..$AFTER"
+          elif git rev-parse --verify -q origin/dev >/dev/null && [ "$GITHUB_REF" != "refs/heads/dev" ]; then
+            scripts/check-authors.sh "origin/dev..$AFTER"
+          else
+            scripts/check-authors.sh -n 30 "$AFTER"
+          fi

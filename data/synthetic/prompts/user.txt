@@ -1,0 +1,16 @@
+Generate one small batch of synthetic Annex C data. The batch must contain students, courses,
+attendance, and results with matching foreign keys. Use this JSON schema exactly:
+
+{
+  "type": "object",
+  "required": ["students", "courses", "attendance", "results"],
+  "properties": {
+    "students": {"type": "array", "items": {"type": "object", "required": ["student_id", "full_name", "programme", "batch_year", "current_semester", "cgpa", "active_backlogs"]}},
+    "courses": {"type": "array", "items": {"type": "object", "required": ["course_code", "course_name", "programme", "semester", "credits"]}},
+    "attendance": {"type": "array", "items": {"type": "object", "required": ["student_id", "course_code", "classes_held", "classes_attended"]}},
+    "results": {"type": "array", "items": {"type": "object", "required": ["student_id", "course_code", "exam_session", "exam_type", "internal_marks", "external_marks", "total_marks", "max_marks", "result"]}}
+  }
+}
+
+Generate exactly the requested number of students, at least six courses across two programmes,
+valid REGULAR results, and no S9000-S9999 or JDG* codes. Return JSON only.

@@ -1,0 +1,50 @@
+name: docker
+
+# Proves `docker compose up` works and the API honours the contract. Required for the release PR.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    tags: [final]
+  workflow_dispatch:
+
+jobs:
+  compose-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Mock-LLM environment
+        run: cp .env.example .env && sed -i 's/^MOCK_LLM=.*/MOCK_LLM=true/' .env
+
+      - name: Build and start
+        run: docker compose up -d --build
+
+      - name: Wait for /health
+        run: |
+          for i in $(seq 1 60); do
+            curl -fsS localhost:8000/health && exit 0
+            sleep 5
+          done
+          docker compose logs api
+          exit 1
+
+      - name: /ask honours the Section 6 contract
+        run: |
+          curl -fsS -X POST localhost:8000/ask \
+            -H 'Content-Type: application/json' -H 'X-Student-Id: S1001' \
+            -d '{"question":"What is the scholarship for studying in Antarctica?","as_of_date":"2026-10-06"}' | tee ask.json
+          python3 - <<'PY'
+          import json
+          d = json.load(open("ask.json"))
+          need = {"trace_id", "answer", "answer_type", "citations", "tools_invoked",
+                  "applied_rules", "conflicts_detected", "explanation", "as_of_date"}
+          missing = need - d.keys()
+          assert not missing, f"missing keys: {missing}"
+          print("contract ok:", d["answer_type"])
+          PY
+
+      - name: Tear down
+        if: always()
+        run: docker compose down -v
